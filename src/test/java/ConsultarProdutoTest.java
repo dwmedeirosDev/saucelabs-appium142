@@ -2,6 +2,8 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.options.BaseOptions;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -50,17 +52,17 @@ public class ConsultarProdutoTest {
 
   @Test
   public void sampleTest() {
-    WebElement el1 = driver.findElement(AppiumBy.accessibilityId("title"));
-    el1.click();
+    WebElement lblSecao = driver.findElement(AppiumBy.accessibilityId("title"));
+    assertEquals("Products", lblSecao.getText());
 
-    WebElement el2 = driver.findElement(AppiumBy.xpath("(//android.widget.ImageView[@content-desc=\"Product Image\"])[1]"));
-    el2.click();
+    WebElement imgProduto = driver.findElement(AppiumBy.xpath("(//android.widget.ImageView[@content-desc=\"Product Image\"])[1]"));
+    imgProduto.click();
 
-    WebElement el3 = driver.findElement(AppiumBy.id("com.saucelabs.mydemoapp.android:id/productTV"));
-    el3.click();
+    WebElement lblTituloProduto = driver.findElement(AppiumBy.id("com.saucelabs.mydemoapp.android:id/productTV"));
+    assertEquals("Sauce Labs Backpack", lblTituloProduto.getText());
 
-    WebElement el4 = driver.findElement(AppiumBy.id("com.saucelabs.mydemoapp.android:id/priceTV"));
-    el4.click();
+    WebElement lblPrecoProduto = driver.findElement(AppiumBy.id("com.saucelabs.mydemoapp.android:id/priceTV"));
+    assertEquals("$ 29.99", lblPrecoProduto.getText());
 
     final var finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
     var start = new Point(476, 1753);
@@ -74,8 +76,8 @@ public class ConsultarProdutoTest {
     swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
     driver.perform(Arrays.asList(swipe));
 
-    WebElement el5 = driver.findElement(AppiumBy.accessibilityId("Tap to add product to cart"));
-    el5.click();
+    WebElement btnAdicionarCarrinho = driver.findElement(AppiumBy.accessibilityId("Tap to add product to cart"));
+    btnAdicionarCarrinho.click();
   }
 
   @AfterEach
