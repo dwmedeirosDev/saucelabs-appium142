@@ -1,0 +1,45 @@
+## Teste Mobile ##
+
+--> Testes de aplicativos para celulares e tablets (Smartwatch, central de mídia, etc...)
+
+@ Framework Appium
+
+* Testa tanto Android quanto IOS
+* Vertente do Selenium WebDriver voltada para apicativos
+* Multiplos Sistemas Operacionais
+* Multiplas linguagens de programação: C#, JavaScript, Java, Python, etc...
+
+Tipos de aplicativos
+- WebApp (Site disfarçado de aplicativos)
+- Nativo: Um projeto separado para Android e IOS
+- Híbrido: Um projeto gera aplicativos para Android e IOS
+
+Ambiente de teste em nuvem = Device Farms
+- SauceLabs
+- BrowserStack
+- Perfecto
+
+@ Roteiro de inspeção
+1. Criar uma conta no SauceLabs
+2. Instalar o app alvo (MyDemoApp) e Apk Info - Na opção App Management (SauceLabs)
+3. Usar o Apk Info para descobri 2 informações:
+    * appPackage: com.saucelabs.mydemoapp.android
+    * appActivity: com.saucelabs.mydemoapp.android.view.activities.SplashActivity
+4. Instalar e configurar o Appium Inspector
+    4.1 Inserir "Sauce Username" e "Sauce Acess Key"
+    
+    4.2 {
+            "platformName": "Android",
+            "appium:platformVersion": "9.0",
+            "appium:deviceName": "Galaxy S9 FHD GoogleAPI Emulator",
+            "appium:deviceOrientation": "portrait",
+            "appium:app": "storage:filename=mda-2.2.0-25.apk",
+            "appium:appPackage": "com.saucelabs.mydemoapp.android",
+            "appium:appActivity": "com.saucelabs.mydemoapp.android.view.activities.SplashActivity"
+        }
+5. Inspecionar e gravar os elementos e exportar o código
+6. Importar o código e ajustar para execução (VSCode)
+
+
+
+
